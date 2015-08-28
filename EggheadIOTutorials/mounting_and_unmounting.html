@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" />
+  <script type="text/javascript" src="http://fb.me/react-0.12.2.js"></script>
+  <script type="text/javascript" src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+</head>
+<body>
+<script type="text/jsx">
+  var App = React.createClass({
+    mount: function() {
+      React.render(<Button />, document.getElementById('app'));
+    },
+    unmount: function() {
+      React.unmountComponentAtNode(document.getElementById('app'));
+    },
+    render: function() {
+      return (
+        <div>
+          <button onClick={this.mount}>Mount</button>
+          <button onClick={this.unmount}>Unmount</button>
+          <div id="app"> </div>
+        </div>
+      );
+    }
+  });
+
+  var Button = React.createClass({
+    getInitialState: function() {
+      return {
+        val: 0
+      }
+    },
+    componentWillMount: function() {
+      console.log('mounting');
+    },
+    componentDidMount: function() {
+      console.log('mounted');
+    },
+    componentWillUnmount: function() {
+      console.log('bye');
+    },
+    update: function() {
+      this.setState({
+        val: this.state.val + 1
+      });
+    },
+    render: function() {
+      console.log('rendering');
+      return (
+        
+        <button className="btn btn-default" onClick={this.update}>{this.state.val}</button>
+      );
+    }
+  });
+
+  React.render(<App />, document.body);
+</script>
+</body>
+</html>

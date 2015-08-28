@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello World</title>
+	<script type="text/javascript" src="http://fb.me/react-0.12.2.js"></script>
+	<script type="text/javascript" src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+</head>
+<body>
+
+<script type="text/jsx">
+	var App = React.createClass({
+  // state is meant to be updated and maintained by the component
+    getInitialState: function() {
+      return {
+        blah: 'the state blah',
+        id:0
+      }
+    },
+    // custom function that takes an event and updates the state
+    update: function(e) {
+      this.setState({
+        blah: e.target.value
+      });
+    },
+    getDefaultProps: function(){
+      return {
+        text: 'no text to see here'
+      }
+    },
+    propTypes: {
+      text:React.PropTypes.string,
+      dad: React.PropTypes.number.isRequired
+    },
+		render: function() {
+      var text = this.props.text,
+          dad = this.props.dad,
+          blah = this.state.blah;
+			return (
+				<div>
+  				<b>{blah}</b>
+  				<h1>{text}</h1>
+          // link update function to any change in this input
+          <input type="text" onChange={this.update} />
+          <h3>{dad}</h3>
+        </div>
+				);
+		}
+	});
+  // anything you pass in will be as props
+	React.render(<App dad={12} />, document.body);
+</script>
+</body>
+</html>

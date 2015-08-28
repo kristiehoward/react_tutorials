@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" />
+  <script type="text/javascript" src="http://fb.me/react-0.12.2.js"></script>
+  <script type="text/javascript" src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+</head>
+<body>
+<script type="text/jsx">
+  var App = React.createClass({
+    render: function() {
+      return (<Button>I <Heart /> React</Button>);
+    }
+  });
+
+  var Button = React.createClass({
+    render: function() {
+      return (
+        <button className="btn btn-default">{this.props.children}</button>
+      );
+    }
+  });
+
+  var Heart = React.createClass({
+    render: function() {
+      return (
+        <span className="glyphicon glyphicon-heart"></span>
+      );
+    }
+  });
+
+  React.render(<App />, document.body);
+</script>
+</body>
+</html>
